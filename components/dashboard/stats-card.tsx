@@ -8,7 +8,7 @@ import { cn } from '@/lib/utils';
 interface StatsCardProps {
   title: string;
   value: string | number;
-  icon: LucideIcon;
+  icon: typeof LucideIcon;
   variant?: 'primary' | 'gold' | 'crimson';
   subtitle?: string;
   children?: ReactNode;
