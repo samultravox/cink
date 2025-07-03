@@ -129,7 +129,7 @@ export function AddPaymentForm({ onAddPayment, currentProvision }: AddPaymentFor
             <span className="text-sm font-bold text-[rgb(var(--foreground))] uppercase">Částka</span>
           </div>
           
-          {/* Quick Amount Buttons - NO HOVER SCALING */}
+          {/* Quick Amount Buttons */}
           <div className="col-span-7 flex space-x-1">
             {quickAmounts.map((amount) => (
               <button
@@ -137,7 +137,7 @@ export function AddPaymentForm({ onAddPayment, currentProvision }: AddPaymentFor
                 type="button"
                 onClick={() => handleQuickAmount(amount)}
                 className={cn(
-                  'flex-1 px-2 py-1.5 rounded-md text-xs font-bold transition-colors duration-200',
+                  'flex-1 px-2 py-1.5 rounded-md text-xs font-bold transition-colors duration-200 cursor-pointer',
                   formData.amount === amount.toString()
                     ? 'bg-gradient-to-r from-[rgb(var(--neon-orchid))] to-[rgb(var(--crimson))] text-white shadow-md'
                     : 'bg-[rgba(var(--sunset-gold),0.15)] text-[rgb(var(--foreground))] border border-[rgba(var(--sunset-gold),0.3)] hover:border-[rgba(var(--neon-orchid),0.5)]'
@@ -148,26 +148,26 @@ export function AddPaymentForm({ onAddPayment, currentProvision }: AddPaymentFor
             ))}
           </div>
           
-          {/* Custom Amount Input - Narrower */}
+          {/* Custom Amount Input */}
           <div className="col-span-3">
             <input
               type="number"
               value={formData.amount}
               onChange={(e) => handleAmountChange(e.target.value)}
-              className="w-full px-3 py-1.5 rounded-md text-sm font-bold text-center bg-[rgba(var(--velvet-gray),0.5)] border border-[rgba(var(--neon-orchid),0.2)] text-[rgb(var(--foreground))] placeholder-[rgb(var(--muted-foreground))] focus:outline-none focus:border-[rgba(var(--neon-orchid),0.5)] transition-all duration-200"
+              className="w-full px-3 py-1.5 rounded-md text-sm font-bold text-center bg-[rgba(var(--velvet-gray),0.5)] border border-[rgba(var(--neon-orchid),0.2)] text-[rgb(var(--foreground))] placeholder-[rgb(var(--muted-foreground))] focus:outline-none focus:border-[rgba(var(--neon-orchid),0.5)] transition-all duration-200 cursor-text"
               placeholder="Vlastní částka (CZK)..."
             />
           </div>
         </div>
 
-        {/* Row 2: Model Selection - NO HOVER SCALING */}
+        {/* Row 2: Model Selection */}
         <div className="grid grid-cols-12 gap-3 items-center">
           <div className="col-span-2 flex items-center space-x-2">
             <Crown className="w-4 h-4 text-[rgb(var(--sunset-gold))]" />
             <span className="text-sm font-bold text-[rgb(var(--foreground))] uppercase">Modelka</span>
           </div>
           
-          {/* Model Quick Selection - NO HOVER SCALING */}
+          {/* Model Quick Selection */}
           <div className="col-span-6 flex space-x-1">
             {models.map((model) => (
               <button
@@ -175,7 +175,7 @@ export function AddPaymentForm({ onAddPayment, currentProvision }: AddPaymentFor
                 type="button"
                 onClick={() => handleModelChange(model.id)}
                 className={cn(
-                  'flex-1 px-2 py-1.5 rounded-md text-xs font-bold transition-colors duration-200',
+                  'flex-1 px-2 py-1.5 rounded-md text-xs font-bold transition-colors duration-200 cursor-pointer',
                   formData.model === model.id
                     ? 'bg-gradient-to-r from-[rgb(var(--sunset-gold))] to-[rgb(var(--neon-orchid))] text-white shadow-md'
                     : 'bg-[rgba(var(--purple-500),0.15)] text-[rgb(var(--foreground))] border border-[rgba(var(--purple-500),0.3)] hover:border-[rgba(var(--neon-orchid),0.5)]'
@@ -186,13 +186,13 @@ export function AddPaymentForm({ onAddPayment, currentProvision }: AddPaymentFor
             ))}
           </div>
           
-          {/* Channel Dropdown - Aligned */}
+          {/* Channel Dropdown */}
           <div className="col-span-4">
             <select
               value={formData.channel}
               onChange={(e) => setFormData(prev => ({ ...prev, channel: e.target.value }))}
               className={cn(
-                'w-full px-3 py-1.5 rounded-md text-sm bg-[rgba(var(--velvet-gray),0.5)] border border-[rgba(var(--neon-orchid),0.2)] text-[rgb(var(--foreground))] focus:outline-none focus:border-[rgba(var(--neon-orchid),0.5)] transition-all duration-200',
+                'w-full px-3 py-1.5 rounded-md text-sm bg-[rgba(var(--velvet-gray),0.5)] border border-[rgba(var(--neon-orchid),0.2)] text-[rgb(var(--foreground))] focus:outline-none focus:border-[rgba(var(--neon-orchid),0.5)] transition-all duration-200 cursor-pointer',
                 !formData.model && 'opacity-50 cursor-not-allowed'
               )}
               disabled={!formData.model}
@@ -205,9 +205,9 @@ export function AddPaymentForm({ onAddPayment, currentProvision }: AddPaymentFor
           </div>
         </div>
 
-        {/* Row 3: Client, Account, Category - Narrower Fields with Better Balance */}
+        {/* Row 3: Client, Account, Category */}
         <div className="grid grid-cols-12 gap-3 items-center">
-          {/* Client with Plus Button - Narrower */}
+          {/* Client with Plus Button */}
           <div className="col-span-3">
             <div className="flex items-center space-x-1 mb-1">
               <User className="w-3 h-3 text-[rgb(var(--muted-foreground))]" />
@@ -218,12 +218,12 @@ export function AddPaymentForm({ onAddPayment, currentProvision }: AddPaymentFor
                 type="text"
                 value={formData.client}
                 onChange={(e) => setFormData(prev => ({ ...prev, client: e.target.value }))}
-                className="flex-1 px-2 py-1.5 rounded-md text-sm bg-[rgba(var(--velvet-gray),0.5)] border border-[rgba(var(--neon-orchid),0.2)] text-[rgb(var(--foreground))] placeholder-[rgb(var(--muted-foreground))] focus:outline-none focus:border-[rgba(var(--neon-orchid),0.5)] transition-all duration-200"
+                className="flex-1 px-2 py-1.5 rounded-md text-sm bg-[rgba(var(--velvet-gray),0.5)] border border-[rgba(var(--neon-orchid),0.2)] text-[rgb(var(--foreground))] placeholder-[rgb(var(--muted-foreground))] focus:outline-none focus:border-[rgba(var(--neon-orchid),0.5)] transition-all duration-200 cursor-text"
                 placeholder="Jméno klienta"
               />
               <button
                 type="button"
-                className="px-2 py-1.5 rounded-md bg-[rgba(var(--neon-orchid),0.2)] border border-[rgba(var(--neon-orchid),0.3)] text-[rgb(var(--neon-orchid))] hover:bg-[rgba(var(--neon-orchid),0.3)] transition-all duration-200"
+                className="px-2 py-1.5 rounded-md bg-[rgba(var(--neon-orchid),0.2)] border border-[rgba(var(--neon-orchid),0.3)] text-[rgb(var(--neon-orchid))] hover:bg-[rgba(var(--neon-orchid),0.3)] transition-all duration-200 cursor-pointer"
                 title="Přidat nového klienta"
               >
                 <Plus className="w-3 h-3" />
@@ -231,7 +231,7 @@ export function AddPaymentForm({ onAddPayment, currentProvision }: AddPaymentFor
             </div>
           </div>
           
-          {/* Account - Narrower */}
+          {/* Account */}
           <div className="col-span-3">
             <div className="flex items-center space-x-1 mb-1">
               <CreditCard className="w-3 h-3 text-[rgb(var(--muted-foreground))]" />
@@ -240,7 +240,7 @@ export function AddPaymentForm({ onAddPayment, currentProvision }: AddPaymentFor
             <select
               value={formData.account}
               onChange={(e) => setFormData(prev => ({ ...prev, account: e.target.value }))}
-              className="w-full px-2 py-1.5 rounded-md text-sm bg-[rgba(var(--velvet-gray),0.5)] border border-[rgba(var(--neon-orchid),0.2)] text-[rgb(var(--foreground))] focus:outline-none focus:border-[rgba(var(--neon-orchid),0.5)] transition-all duration-200"
+              className="w-full px-2 py-1.5 rounded-md text-sm bg-[rgba(var(--velvet-gray),0.5)] border border-[rgba(var(--neon-orchid),0.2)] text-[rgb(var(--foreground))] focus:outline-none focus:border-[rgba(var(--neon-orchid),0.5)] transition-all duration-200 cursor-pointer"
             >
               <option value="">Vybrat účet</option>
               {accounts.map((account) => (
@@ -249,7 +249,7 @@ export function AddPaymentForm({ onAddPayment, currentProvision }: AddPaymentFor
             </select>
           </div>
           
-          {/* NEW: Category Dropdown */}
+          {/* Category Dropdown */}
           <div className="col-span-3">
             <div className="flex items-center space-x-1 mb-1">
               <Tag className="w-3 h-3 text-[rgb(var(--muted-foreground))]" />
@@ -258,7 +258,7 @@ export function AddPaymentForm({ onAddPayment, currentProvision }: AddPaymentFor
             <select
               value={formData.category}
               onChange={(e) => setFormData(prev => ({ ...prev, category: e.target.value }))}
-              className="w-full px-2 py-1.5 rounded-md text-sm bg-[rgba(var(--velvet-gray),0.5)] border border-[rgba(var(--neon-orchid),0.2)] text-[rgb(var(--foreground))] focus:outline-none focus:border-[rgba(var(--neon-orchid),0.5)] transition-all duration-200"
+              className="w-full px-2 py-1.5 rounded-md text-sm bg-[rgba(var(--velvet-gray),0.5)] border border-[rgba(var(--neon-orchid),0.2)] text-[rgb(var(--foreground))] focus:outline-none focus:border-[rgba(var(--neon-orchid),0.5)] transition-all duration-200 cursor-pointer"
             >
               <option value="">Vybrat kategorii</option>
               {categories.map((category) => (
@@ -267,7 +267,7 @@ export function AddPaymentForm({ onAddPayment, currentProvision }: AddPaymentFor
             </select>
           </div>
           
-          {/* Screenshot - Clean Upload Button - NO HOVER SCALING */}
+          {/* Screenshot - Clean Upload Button */}
           <div className="col-span-3">
             <div className="flex items-center space-x-1 mb-1">
               <Camera className="w-3 h-3 text-[rgb(var(--muted-foreground))]" />
@@ -308,7 +308,7 @@ export function AddPaymentForm({ onAddPayment, currentProvision }: AddPaymentFor
               type="text"
               value={formData.notes}
               onChange={(e) => setFormData(prev => ({ ...prev, notes: e.target.value }))}
-              className="w-full px-3 py-1.5 rounded-md text-sm bg-[rgba(var(--velvet-gray),0.5)] border border-[rgba(var(--neon-orchid),0.2)] text-[rgb(var(--foreground))] placeholder-[rgb(var(--muted-foreground))] focus:outline-none focus:border-[rgba(var(--neon-orchid),0.5)] transition-all duration-200"
+              className="w-full px-3 py-1.5 rounded-md text-sm bg-[rgba(var(--velvet-gray),0.5)] border border-[rgba(var(--neon-orchid),0.2)] text-[rgb(var(--foreground))] placeholder-[rgb(var(--muted-foreground))] focus:outline-none focus:border-[rgba(var(--neon-orchid),0.5)] transition-all duration-200 cursor-text"
               placeholder="Dodatečné informace..."
             />
           </div>
@@ -331,10 +331,10 @@ export function AddPaymentForm({ onAddPayment, currentProvision }: AddPaymentFor
           </div>
         )}
 
-        {/* Submit Button - Bold, Full-Width, Colorful - NO HOVER SCALING */}
+        {/* Submit Button - Bold, Full-Width, Colorful */}
         <button
           type="submit"
-          className="w-full flex items-center justify-center space-x-3 px-6 py-3 rounded-lg font-black text-lg bg-gradient-to-r from-[rgb(var(--neon-orchid))] via-[rgb(var(--crimson))] to-[rgb(var(--sunset-gold))] text-white shadow-lg hover:shadow-xl transition-all duration-300 border border-[rgba(255,255,255,0.2)]"
+          className="w-full flex items-center justify-center space-x-3 px-6 py-3 rounded-lg font-black text-lg bg-gradient-to-r from-[rgb(var(--neon-orchid))] via-[rgb(var(--crimson))] to-[rgb(var(--sunset-gold))] text-white shadow-lg hover:shadow-xl transition-all duration-300 border border-[rgba(255,255,255,0.2)] cursor-pointer"
         >
           <Plus className="w-5 h-5" />
           <span className="uppercase tracking-wider">Přidat Platbu (CZK)</span>
