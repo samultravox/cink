@@ -255,7 +255,7 @@ export default function Dashboard() {
     const current = type === 'chatting' ? getCurrentChatRevenue() : getCurrentProfit();
     const goalData = performanceGoals[currentTimeframe as keyof typeof performanceGoals];
     
-    if (!goalData) return null;
+    if (!goalData) return undefined;
     
     const target = type === 'chatting' ? goalData.chattingRevenueGoal : goalData.profitGoal;
     
